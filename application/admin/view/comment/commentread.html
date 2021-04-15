@@ -1,0 +1,82 @@
+{include file="public/head" /}
+
+        {include file="public/left" /}
+
+<!--            <div class="page-body">-->
+<!--                <div class="row">-->
+<!--                    <div class="col-xs-12">-->
+<!--                        <div class="widget radius-bordered">-->
+<!--                            <div class="widget-header bordered-bottom bordered-themeprimary">-->
+<!--                                <span class="widget-caption">评论内容</span>-->
+<!--                            </div>-->
+<!--                            <div class="widget-body">-->
+<!--                                <form class="form-horizontal">-->
+<!--                                    <div class="form-group">-->
+<!--                                        <label for="title" class="col-sm-2 control-label no-padding-right">评论文章</label>-->
+<!--                                        <div class="col-sm-6">-->
+<!--                                            <input type="text" class="form-control" id="title" placeholder="评论文章" value="{$commentInfo.article.title}" readonly />-->
+<!--                                        </div>-->
+<!--                                    </div>-->
+<!--                                    <div class="form-group">-->
+<!--                                        <label for="username" class="col-sm-2 control-label no-padding-right">评论用户</label>-->
+<!--                                        <div class="col-sm-6">-->
+<!--                                            <input type="text" class="form-control" id="username" value="{$commentInfo.member.nickname}" readonly>-->
+<!--                                        </div>-->
+<!--                                    </div>-->
+<!--                                    <div class="form-group">-->
+<!--                                        <label for="content" class="col-sm-2 control-label no-padding-right">评论内容</label>-->
+<!--                                        <div class="col-sm-6">-->
+<!--                                            <textarea name="content" id="content" cols="30" rows="10" class="form-control" readonly>{$commentInfo.content}</textarea>-->
+<!--                                        </div>-->
+<!--                                    </div>-->
+<!--                                </form>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+
+
+
+<div class="layui-body">
+    <div style="padding: 15px;">
+        <fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">
+            <legend>评论查看</legend>
+        </fieldset>
+        <div>
+            <span style="font-size: 20px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;评论内容:</span>
+        </div>
+        <div>
+            <form>
+                <div class="layui-form-item">
+                    <label for="title" class="layui-form-label">评论文章</label>
+                    <div class="layui-input-block">
+                        <input type="text" id="title" placeholder="评论文章" value="{$commentInfo.article.title}" readonly class="layui-input" />
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label for="username" class="layui-form-label">评论用户</label>
+                    <div class="layui-input-block">
+                        <input type="text" id="username" value="{$commentInfo.member.nickname}" readonly class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label for="content" class="layui-form-label">评论内容</label>
+                    <div class="layui-input-block">
+                        <textarea name="content" id="content" readonly class="layui-textarea">{$commentInfo.content}</textarea>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+{include file="public/foot" /}
+</body>
+<!--  /Body -->
+</html>

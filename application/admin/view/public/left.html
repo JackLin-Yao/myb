@@ -1,0 +1,263 @@
+<!-- <div class="page-sidebar" id="sidebar">
+    <ul class="nav sidebar-menu">
+        <li>
+            <a href="{:url('admin/home/index')}">
+                <i class="menu-icon glyphicon glyphicon-home"></i>
+                <span class="menu-text">后台首页</span>
+            </a>
+        </li>
+        <li>
+            <a href="#" class="menu-dropdown">
+                <i class="menu-icon glyphicon glyphicon glyphicon-th"></i>
+                <span class="menu-text">栏目管理</span>
+                <i class="menu-expand"></i>
+            </a>
+            <ul class="submenu">
+                <li>
+                    <a href="{:url('admin/cate/catelist')}">
+                        <span class="menu-text">栏目列表</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{:url('admin/cate/cateadd')}">
+                        <span class="menu-text">栏目添加</span>
+                    </a>
+                </li>
+            </ul>
+        </li>
+        <li>
+            <a href="#" class="menu-dropdown">
+                <i class="menu-icon glyphicon glyphicon glyphicon-book"></i>
+                <span class="menu-text">文章管理</span>
+                <i class="menu-expand"></i>
+            </a>
+            <ul class="submenu">
+                <li>
+                    <a href="{:url('admin/article/articlelist')}">
+                        <span class="menu-text">文章列表</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{:url('admin/article/articleadd')}">
+                        <span class="menu-text">文章添加</span>
+                    </a>
+                </li>
+            </ul>
+        </li>
+        <li>
+            <a href="{:url('admin/comment/commentlist')}">
+                <i class="menu-icon glyphicon glyphicon-th-list"></i>
+                <span class="menu-text">评论列表</span>
+            </a>
+        </li>
+        <li>
+            <a href="#" class="menu-dropdown">
+                <i class="menu-icon glyphicon glyphicon-user"></i>
+                <span class="menu-text">会员管理</span>
+                <i class="menu-expand"></i>
+            </a>
+            <ul class="submenu">
+                <li>
+                    <a href="{:url('admin/member/memberlist')}">
+                        <span class="menu-text">会员列表</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{:url('admin/member/memberadd')}">
+                        <span class="menu-text">会员添加</span>
+                    </a>
+                </li>
+            </ul>
+        </li>
+        <li>
+            <a href="#" class="menu-dropdown">
+                <i class="menu-icon glyphicon glyphicon glyphicon-send"></i>
+                <span class="menu-text">管理员管理</span>
+                <i class="menu-expand"></i>
+            </a>
+            <ul class="submenu">
+                <li>
+                    <a href="{:url('admin/admin/adminlist')}">
+                        <span class="menu-text">管理员列表</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{:url('admin/admin/adminadd')}">
+                        <span class="menu-text">管理员添加</span>
+                    </a>
+                </li>
+            </ul>
+        </li>
+        <li>
+            <a href="{:url('admin/system/set')}">
+                <i class="menu-icon glyphicon glyphicon-cog"></i>
+                <span class="menu-text">系统设置</span>
+            </a>
+        </li>
+    </ul>
+</div>
+ -->
+
+
+
+
+
+
+
+<div class="layui-side layui-bg-black">
+	<div class="layui-side-scroll">
+
+		<!-- 左侧导航区域（可配合layui已有的垂直导航） -->
+		<ul class="layui-nav layui-nav-tree" lay-filter="test">
+			<!-- 分类栏目管理 -->
+			<li class="layui-nav-item layui-nav-item">
+				<a class="" href="javascript:;">分类栏目管理</a>
+				<dl class="layui-nav-child">
+					<dd><a href="{:url('admin/cate/catelist')}">分类栏目列表</a></dd>
+					<dd><a href="{:url('admin/cate/cateadd')}">分类添加</a></dd>
+				</dl>
+			</li> <!-- 文章管理 -->
+			<li class="layui-nav-item">
+				<a href="javascript:;">文章管理</a>
+				<dl class="layui-nav-child">
+					<dd><a href="{:url('admin/article/articlelist')}">文章列表</a></dd>
+					<dd><a href="{:url('admin/article/articleadd')}">文章添加</a></dd>
+
+				</dl>
+			</li>
+			<!-- 评论管理 -->
+			<li class="layui-nav-item">
+				<a href="javascript:;">评论管理</a>
+				<dl class="layui-nav-child">
+					<dd><a href="{:url('admin/comment/commentlist')}">评论列表</a></dd>
+
+				</dl>
+			</li>
+			<!-- 会员管理 -->
+			<li class="layui-nav-item">
+				<a href="javascript:;">会员管理</a>
+				<dl class="layui-nav-child">
+					<dd><a href="{:url('admin/member/memberlist')}">会员列表</a></dd>
+					<dd><a href="{:url('admin/member/memberadd')}">添加会员</a></dd>
+
+				</dl>
+			</li>
+			<!-- 管理员管理 -->
+			<li class="layui-nav-item">
+				<a href="javascript:;">管理员管理</a>
+				<dl class="layui-nav-child">
+					<dd><a href="{:url('admin/admin/adminlist')}">管理员列表</a></dd>
+					<dd><a href="{:url('admin/admin/adminadd')}">管理员添加</a></dd>
+
+				</dl>
+			</li>
+			<!-- 系统设置 -->
+			<li class="layui-nav-item">
+				<a href="javascript:;">系统管理</a>
+				<dl class="layui-nav-child">
+					<dd><a href="{:url('admin/system/set')}">系统设置</a></dd>
+
+				</dl>
+			</li>
+			<!-- 相册管理 -->
+			<li class="layui-nav-item">
+				<a href="javascript:;">图片管理</a>
+				<dl class="layui-nav-child">
+					<dd><a href="javascript:;">图片列表</a></dd>
+					<dd><a href="javascript:;">图片编辑</a></dd>
+
+				</dl>
+			</li>
+		</ul>
+	</div>
+</div>
+
+<div>
+
+<!-- 主体部分下面 -->
+
+
+
+
+
+
+	<!-- <div class="Hui-aside">
+	<div class="menu_dropdown bk_2">
+		<dt><a href="{:url('admin/home/index')}"><i class="Hui-iconfont">&#xe613;</i>后台首页</a></dt>
+			<dl id="menu-article">
+				<dt><i class="Hui-iconfont">&#xe616;</i>栏目管理 <i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
+				<dd>
+					<ul>
+						<li><a target="myb" href="{:url('admin/cate/catelist')}">栏目列表</a></li>
+						<li><a target="myb" href="" {:url('admin/cate/cateadd')}">栏目添加 </a> </li> </ul> </dd> </dl> <dl id="menu-picture">
+				<dt><i class="Hui-iconfont">&#xe613;</i>文章管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
+				<dd>
+					<ul>
+						<li><a target="myb" href="{:url('admin/article/articlelist')}">文章列表</a></li>
+						<li><a target="myb" href="{:url('admin/article/articleadd')}">文章增加</a></li>
+					</ul>
+				</dd>
+			</dl>
+
+			<dl id="menu-comments">
+				<dt><i class="Hui-iconfont">&#xe622;</i> 评论管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
+				<dd>
+					<ul>
+						<li><a target="myb" href="{:url('admin/comment/commentlist')}">评论列表</a></li>
+
+					</ul>
+				</dd>
+			</dl>
+			<dl id="menu-member">
+				<dt><i class="Hui-iconfont">&#xe60d;</i> 会员管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
+				<dd>
+					<ul>
+						<li><a target="myb" href="{:url('admin/member/memberlist')}">会员列表</a></li>
+						<li><a target="myb" href="{:url('admin/member/memberadd')}">添加会员</a></li>
+
+					</ul>
+				</dd>
+			</dl>
+			<dl id="menu-admin">
+				<dt><i class="Hui-iconfont">&#xe62d;</i> 管理员管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
+				<dd>
+					<ul>
+
+						<li><a target="myb" href="{:url('admin/admin/adminlist')}">管理员列表</a></li>
+						<li><a target="myb" href="{:url('admin/admin/adminadd')}">管理员添加</a></li>
+					</ul>
+				</dd>
+			</dl>
+
+			<dl id="menu-system">
+				<dt><i class="Hui-iconfont">&#xe62e;</i> 系统管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
+				<dd>
+					<ul>
+						<li><a  target="myb" href="{:url('admin/system/set')}">系统设置</a></li>
+
+					</ul>
+				</dd>
+			</dl>
+	</div>
+
+
+</div>
+
+		<div class="dislpayArrow hidden-xs"><a class="pngfix" href="javascript:void(0);" onClick="displaynavbar(this)"></a></div>
+		<section class="Hui-article-box">
+			<div id="Hui-tabNav" class="Hui-tabNav hidden-xs">
+				<div class="Hui-tabNav-wp">
+					<ul id="min_title_list" class="acrossTab cl">
+						<li class="active">
+							<span title="我的桌面" >我的桌面</span>
+							<em></em></li>
+					</ul>
+				</div>
+				<div class="Hui-tabNav-more btn-group"><a id="js-tabNav-prev" class="btn radius btn-default size-S" href="javascript:;"><i
+						 class="Hui-iconfont">&#xe6d4;</i></a><a id="js-tabNav-next" class="btn radius btn-default size-S" href="javascript:;"><i
+						 class="Hui-iconfont">&#xe6d7;</i></a></div>
+			</div>
+			<div id="iframe_box" class="Hui-article">
+				<div class="show_iframe">
+					<div style="display:none" class="loading">
+						<iframe  name="myb" scrolling="yes" frameborder="0" src=""> -->

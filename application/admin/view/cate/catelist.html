@@ -1,0 +1,154 @@
+{include file="public/head" /}
+
+     
+ {include file="public/left" /}
+
+
+         <!--   <div class="page-body">
+                <a href="{:url('admin/cate/cateadd')}" class="btn btn-sm btn-primary"><i class="fa fa-plus"></i>&nbsp;栏目添加</a>
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="widget">
+                            <div class="widget-header">
+                                <span class="widget-caption">栏目列表</span>
+                                <div class="widget-buttons">
+                                    {$cates->render()|raw|replace}
+                                </div>
+                            </div>
+                            <div class="widget-body">
+                                <table class="table table-hover table-bordered">
+                                    <thead>
+                                    <tr>
+                                        <th>排序</th>
+                                        <th>栏目名称</th>
+                                        <th>操作</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    {volist name="cates" id="vo"}
+                                    <tr>
+                                        <td><input type="text" name="sort" size="1" value="{$vo.sort}" dataid="{$vo.id}"></td>
+                                        <td><a href="{:url('admin/article/articlelist', ['cateid' => $vo.id])}">{$vo.catename}</a></td>
+                                        <td>
+                                            <a href="{:url('admin/cate/cateedit', ['id' => $vo.id])}" class="btn btn-azure btn-xs">编辑</a>
+                                            <a href="#" class="btn btn-danger btn-xs cateDel" dataid="{$vo.id}">删除</a>
+                                        </td>
+                                    </tr>
+                                    {/volist}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div> -->
+          
+				<div class="layui-body">
+					<div style="padding: 15px;">
+
+						<fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">
+							<legend  style="text-align:center;">栏目列表</legend>
+							<a href="{:url('admin/cate/cateadd')}"><button type="button" class="layui-btn layui-btn-sm"><i class="layui-icon"></i>栏目添加</button></a>
+
+						</fieldset>
+						<div>
+							{$cates->render()|raw|replace}
+						</div>
+						<div>
+							<table class="layui-table">
+								<thead>
+									<tr>
+										<th>排序</th>
+										<th>栏目名称</th>
+										<th>操作</th>
+									</tr>
+								</thead>
+								<tbody>
+									{volist name="cates" id="vo"}
+									<tr>
+										<td><input type="text" name="sort" size="1" value="{$vo.sort}" dataid="{$vo.id}" class="layui-input"></td>
+										<td><a href="{:url('admin/article/articlelist', ['cateid' => $vo.id])}">{$vo.catename}</a></td>
+										<td>
+											<a href="{:url('admin/cate/cateedit', ['id' => $vo.id])}" class="layui-icon layui-icon-edit" style="font-size: 30px; color: #1E9FFF;" title="编辑"></a>
+											<a href="#" dataid="{$vo.id}" class="layui-icon layui-icon-delete admin-del cateDel" style="font-size: 30px; color: #1E9FFF;"
+											 title="删除"></a>
+										</td>
+									</tr>
+									{/volist}
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+
+{include file="public/foot" /}
+<script>
+    $(function () {
+
+       $('[name=sort]').change(function () {
+           var sort = $(this).val();
+           var id = $(this).attr('dataid');
+           $.ajax({
+               url:"{:url('admin/cate/catesort')}",
+               type:'post',
+               data:{id:id, sort:sort},
+               dataType:'json',
+               success:function (data) {
+                   if (data.code == 1) {
+                       layer.msg(data.msg, {
+                           icon:6,
+                           time:2000
+                       }, function () {
+                           location.href =data.url;
+                       });
+                   }else {
+                       layer.open({
+                           title:'排序失败',
+                           content:data.msg,
+                           icon:5,
+                           anim:6
+                       });
+                   }
+               }
+           });
+       });
+
+        $('.cateDel').click(function () {
+            var id = $(this).attr('dataid');
+            layer.confirm('确定删除吗？', {
+                title:'删除栏目',
+                icon:3,
+                anim:6
+            }, function (index) {
+                layer.close(index);
+                $.ajax({
+                    url:"{:url('admin/cate/catedel')}",
+                    type:'post',
+                    data:{id:id},
+                    dataType:'json',
+                    success:function (data) {
+                        if (data.code == 1) {
+                            layer.msg(data.msg, {
+                                icon:6,
+                                time:2000
+                            }, function () {
+                                location.href = date.url;
+                            });
+                        }else {
+                            layer.open({
+                                title:'操作失败',
+                                content:data.msg,
+                                icon:5,
+                                anim:6
+                            });
+                        }
+                    }
+                });
+            });
+            return false;
+        });
+    });
+</script>
+</body>
+
+</html>

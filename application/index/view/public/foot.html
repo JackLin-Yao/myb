@@ -1,0 +1,29 @@
+<div class="footer" style="">
+    <p>Copyright 2018 <a href="#">www.dreamphp.com.cn</a> All Rights Reserved</p>
+</div>
+
+<script src="/myb/public/static/index/js/jquery-3.3.1.min.js"></script>
+<script src="/myb/public/static/index/js/bootstrap.min.js"></script>
+<script src="/myb/public/static/lib/layer/layer.js"></script>
+<script>
+    $(function () {
+
+
+        $('#loginout').click(function () {
+            $.ajax({
+                url:"{:url('index/index/loginout')}",
+                type:'post',
+                dataType:'json',
+                success:function () {
+                    layer.msg('退出成功！', {
+                        icon:6,
+                        time:2000
+                    }, function () {
+                        location.href = location.href;
+                    });
+                }
+            });
+            return false;
+        });
+    });
+</script>

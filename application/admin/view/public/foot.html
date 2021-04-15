@@ -1,0 +1,227 @@
+
+
+
+
+
+
+	</div>
+
+
+		</div>
+		<div class="footer layui-footer">Copyright 上海电机学院 by 姚铖霖 网络1712 </div>
+<script src="/myb/public/static/jquery.min.js"></script>
+<script src="/myb/public/static/layui/layui/layui.js" charset="utf-8"></script>
+
+
+		<script>
+
+			layui.use(['laypage', 'layer'], function() {
+				var laypage = layui.laypage,
+					layer = layui.layer;
+
+
+				laypage.render({
+					elem: 'render0',
+					count: 150,
+					theme: '#1E9FFF',
+					layout: ['count', 'prev', 'page', 'next', 'refresh', 'skip'],
+					jump: function(obj) {
+						console.log(obj)
+					}
+				});
+
+				laypage.render({
+					elem: 'demo20',
+					count: data.length,
+					jump: function(obj) {
+
+						document.getElementById('biuuu_city_list').innerHTML = function() {
+							var arr = [],
+								thisData = data.concat().splice(obj.curr * obj.limit - obj.limit, obj.limit);
+							layui.each(thisData, function(index, item) {
+								arr.push('<li>' + item + '</li>');
+							});
+							return arr.join('');
+						}();
+					}
+				});
+
+			});
+		</script>
+
+		<script>
+			layui.use('layedit', function() {
+				var layedit = layui.layedit;
+				layedit.build('demo1', {
+					height: 180 //设置编辑器高度
+				}); //建立编辑器
+			});
+		</script>
+
+		<script>
+			layui.use('flow', function() {
+				var flow = layui.flow;
+
+				flow.lazyimg({
+					elem: '#LAY_demo3 img',
+					scrollElem: '#LAY_demo3' //一般不用设置，此处只是演示需要。
+				});
+
+			});
+		</script>
+
+<!--		<script>-->
+<!--			layui.use('upload', function() {-->
+<!--						var $ = layui.jquery,-->
+<!--							upload = layui.upload;-->
+
+<!--						var uploadInst = upload.render({-->
+<!--							elem: '#test1',-->
+<!--							url: 'https://httpbin.org/post' //改成您自己的上传接口-->
+<!--								,-->
+<!--							before: function(obj) {-->
+
+<!--								obj.preview(function(index, file, result) {-->
+<!--									$('#demo1').attr('src', result); //图片链接（base64）-->
+<!--								});-->
+<!--							},-->
+<!--							done: function(res) {-->
+
+<!--								if (res.code > 0) {-->
+<!--									return layer.msg('上传失败');-->
+<!--								}-->
+
+<!--							},-->
+<!--							error: function() {-->
+
+<!--								var demoText = $('#demoText');-->
+<!--								demoText.html(-->
+<!--									'<span style="color: #ff5722;">上传失败</span> <a class="layui-btn layui-btn-xs demo-reload">重试</a>');-->
+<!--								demoText.find('.demo-reload').on('click', function() {-->
+<!--									uploadInst.upload();-->
+<!--								});-->
+<!--							}-->
+<!--						});-->
+<!--						拖拽上传-->
+<!--						upload.render({-->
+<!--							elem: '#test10',-->
+<!--							url: 'tp' //改成您自己的上传接口-->
+<!--								,-->
+<!--							done: function(res) {-->
+<!--								layer.msg('上传成功');-->
+<!--								layui.$('#uploadDemoView').removeClass('layui-hide').find('img').attr('src', res.files.file);-->
+<!--								console.log(res)-->
+<!--							}-->
+<!--						});-->
+<!--		</script>-->
+
+
+		<script>
+			var _hmt = _hmt || [];
+			(function() {
+				var hm = document.createElement("script");
+				hm.src = "https://hm.baidu.com/hm.js";
+				var s = document.getElementsByTagName("script")[0];
+				s.parentNode.insertBefore(hm, s);
+			})();
+		</script>
+<script>
+	$(function() {
+		$('#loginout').click(function() {
+			$.ajax({
+				url: "{:url('admin/index/loginout')}",
+				type: 'post',
+				dataType: 'json',
+				success: function(data) {
+					if (data.code == 1) {
+						layer.msg(data.msg, {
+							icon: 6,
+							time: 2000
+						}, function() {
+							location.href = data.url
+						});
+					} else {
+						layer.open({
+							title: '退出失败',
+							content: data.msg,
+							icon: 5,
+							anim: 6
+						});
+					}
+				}
+			});
+			return false;
+		});
+	});
+</script>
+
+
+
+<!--	</body>-->
+<!--    </html>-->
+
+
+<!-- <script type="text/javascript" src="/myb/public/lib/jquery/1.9.1/jquery.min.js"></script>
+		<script type="text/javascript" src="/myb/public/lib/layer/2.4/layer.js"></script>
+		<script type="text/javascript" src="/myb/public/static/h-ui/js/H-ui.min.js"></script>
+		<script type="text/javascript" src="/myb/public/static/h-ui.admin/js/H-ui.admin.js"></script>
+		<!--/_footer 作为公共模版分离出去
+
+		<!--请在下方写此页面业务相关的脚本-->
+<!-- <script type="text/javascript" src="/myb/public/lib/jquery.contextmenu/jquery.contextmenu.r2.js"></script>
+		<script type="text/javascript">
+			
+			
+			$(function() {
+				/*$("#min_title_list li").contextMenu('Huiadminmenu', {
+					bindings: {
+						'closethis': function(t) {
+							console.log(t);
+							if(t.find("i")){
+								t.find("i").trigger("click");
+							}		
+						},
+						'closeall': function(t) {
+							alert('Trigger was '+t.id+'\nAction was Email');
+						},
+					}
+				});*/
+			
+			
+				$("body").Huitab({
+					tabBar: ".navbar-wrapper .navbar-levelone",
+					tabCon: ".Hui-aside .menu_dropdown",
+					className: "current",
+					index: 0,
+				});
+			});
+			
+			function myselfinfo() {
+				layer.open({
+					type: 1,
+					area: ['300px', '200px'],
+					fix: false, //不固定
+					maxmin: true,
+					shade: 0.4,
+					title: '查看信息',
+					content: '<div>管理员信息</div>'
+				});
+			}
+			
+			/*图片-添加*/
+			function picture_add(title, url) {
+				var index = layer.open({
+					type: 2,
+					title: title,
+					content: url
+				});
+				layer.full(index);
+			}
+			
+			/*用户-添加*/
+				function member_add(title, url, w, h) {
+					layer_show(title, url, w, h);
+				}
+			</script>
+			
+		 -->

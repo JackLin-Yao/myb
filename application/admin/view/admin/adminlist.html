@@ -1,0 +1,281 @@
+{include file="public/head" /}
+{include file="public/left" /}
+
+
+<!--	<div class="layui-body">-->
+<!--		<div style="height: 50px;">-->
+<!--	     <fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">-->
+<!--		<legend>管理员列表</legend>-->
+<!--		<a href="{:url('admin/admin/adminadd')}"><button type="button" class="layui-btn layui-btn-sm"><i class="layui-icon"></i>管理员添加</button></a>-->
+<!--		</fieldset>-->
+
+
+
+<!--						<div style="height: 40px;">-->
+<!--							<a class="layui-btn " style="background-color: #1E9FFF;" href="{:url('admin/admin/adminlist', ['status' => 1])}"-->
+<!--							 id="normal">正常账号</a>-->
+<!--							<a class="layui-btn " style="background-color: #1E9FFF;" href="{:url('admin/admin/adminlist', ['status' => 0])}"-->
+<!--							 id="disable">禁用账号</a>-->
+<!--						</div>-->
+
+
+<!--					<div>-->
+<!--						<table class="layui-table">-->
+<!--							<thead>-->
+<!--								<tr>-->
+<!--									<th>ID</th>-->
+<!--									<th>用户名</th>-->
+<!--									<th>昵称</th>-->
+<!--									<th>邮箱</th>-->
+<!--									<th>状态</th>-->
+<!--									<th>权限 </th>-->
+<!--									<th>操作</th>-->
+<!--								</tr>-->
+<!--							</thead>-->
+<!--							<tbody>-->
+
+<!--								<tr>-->
+<!--									&lt;!&ndash; ID &ndash;&gt;-->
+<!--									<td>-->
+<!--										&lt;!&ndash; {volist name="admins" id="vo"} &ndash;&gt;-->
+
+<!--									</td>-->
+<!--									&lt;!&ndash; 用户名 &ndash;&gt;-->
+<!--									<td>-->
+<!--										&lt;!&ndash; {$vo.username} &ndash;&gt;-->
+
+<!--									</td>-->
+<!--									&lt;!&ndash; 昵称 &ndash;&gt;-->
+<!--									<td>-->
+<!--										&lt;!&ndash; {$vo.nickname} &ndash;&gt;-->
+
+<!--									</td>-->
+<!--									&lt;!&ndash; 邮箱 &ndash;&gt;-->
+<!--									<td>-->
+<!--										&lt;!&ndash; {$vo.email} &ndash;&gt;-->
+
+<!--									</td>-->
+<!--									&lt;!&ndash; 状态 &ndash;&gt;-->
+<!--									<td>-->
+<!--										&lt;!&ndash; {if $vo.status}{if $vo.super == 1}超级管理员{else /}正常{/if}{else /}禁用{/if} &ndash;&gt;-->
+
+<!--									</td>-->
+<!--									&lt;!&ndash; {if session('admin.super') == 1} &ndash;&gt;-->
+<!--									&lt;!&ndash; 权限 &ndash;&gt;-->
+<!--									<td>-->
+
+<!--									</td>-->
+<!--									&lt;!&ndash; 操作 &ndash;&gt;-->
+<!--									<td>-->
+<!--										&lt;!&ndash; <a title="编辑" class="layui-icon layui-icon-edit" style="font-size: 30px; color: #1E9FFF;" href="{:url('admin/admin/adminedit', ['id' => $vo.id])}"></a>-->
+<!--                                            <a href="-->
+<!--									 #" title="删除" class="layui-icon layui-icon-delete admin-del" style="font-size: 30px; color: #1E9FFF;" dataid="{$vo.id}"></a> &ndash;&gt;-->
+<!--									</td>-->
+<!--									&lt;!&ndash; 	<td>-->
+<!--									{if $vo.super != 1}-->
+<!--									{if $vo.status == 0}-->
+<!--									<a href="#" title="启用" class="layui-icon layui-icon-ok  admin-status" style="font-size: 30px; color: #1E9FFF;"-->
+<!--									 dataid="{$vo.id}" statusid="{$vo.status}"></a>-->
+<!--									{else /}-->
+<!--									<a href="#" title="禁用" class="layui-icon layui-icon-close  admin-status" style="font-size: 30px; color: #1E9FFF;"-->
+<!--									 dataid="{$vo.id}" statusid="{$vo.status}"></a>-->
+<!--									{/if}-->
+<!--									{/if}-->
+<!--									<a title="编辑" class="layui-icon layui-icon-edit" style="font-size: 30px; color: #1E9FFF;" href="{:url('admin/admin/adminedit', ['id' => $vo.id])}""></a>-->
+<!--                                            <a href="-->
+<!--									 #" title="删除" class="layui-icon layui-icon-delete admin-del" style="font-size: 30px; color: #1E9FFF;" dataid="{$vo.id}"></a>-->
+<!--								</td>-->
+<!--								{else /}-->
+<!--								<td>无权限</td>-->
+<!--								{/if}-->
+
+<!--							{/volist} &ndash;&gt;-->
+<!--								</tr>-->
+<!--							</tbody>-->
+<!--						</table>-->
+<!--					</div>-->
+
+<!--		</div>-->
+<!--	</div>-->
+
+
+<div class="layui-body">
+	<div style="padding: 15px;">
+		<fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">
+			<legend style="text-align:center;">管理员列表</legend>
+		</fieldset>
+
+		<div class="layui-form-item">
+			<a href=" {:url('admin/admin/adminadd')}" class="" title="管理员添加"><button type="button" class="layui-btn layui-btn-sm"><i
+					class="layui-icon"></i>管理员添加</button></a>
+
+
+
+
+			<div>
+				<table class="layui-table">
+					<thead>
+					<tr>
+						<th>ID</th>
+						<th>账号</th>
+						<th>昵称</th>
+						<th>邮箱</th>
+						<th>状态</th>
+						<th>权限 </th>
+						<th>操作</th>
+					</tr>
+					</thead>
+					<tbody>
+					{volist name="admins" id="vo"}
+
+					<tr>
+
+						<td>
+							{$vo.id}
+
+
+						</td>
+
+						<td>
+							{$vo.username}
+
+						</td>
+
+						<td>
+							{$vo.nickname}
+
+						</td>
+
+						<td>
+							{$vo.email}
+
+						</td>
+
+						<td>
+							{if $vo.status==1}正常{else /}禁用{/if}
+
+
+						</td>
+
+
+						<td>
+							{if $vo.super==1}超级管理员{else /}普通管理员{/if}
+
+						</td>
+
+						<td>
+							{if $vo.super !=1  }
+							{if session('admin.super')==1 }
+
+							{if $vo.status==1}
+							<a href="#" title="禁用" class="layui-icon layui-icon-close  admin-status" style="font-size: 30px; color: #1E9FFF; "dataid="{$vo.id}" statusid="{$vo.status}"></a>
+							{else /}
+							<a href="#" title="启用" class="layui-icon layui-icon-ok  admin-status" style="font-size: 30px; color: #1E9FFF; "dataid="{$vo.id}" statusid="{$vo.status}"></a>
+							{/if}
+							{/if}
+							{/if}
+                                                        <a href="{:url('admin/admin/adminedit', ['id' => $vo.id])}" class="layui-icon layui-icon-edit" style="font-size: 30px; color: #1E9FFF;" title="编辑"></a>
+                                                        <a href="#" class="layui-icon layui-icon-delete admin-del" style="font-size: 30px; color: #1E9FFF;" title="删除"></a>
+                                                    </td>
+                                                </tr>
+                                                {/volist}
+
+
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+
+                            {include file="public/foot" /}
+
+
+                             <script>
+                                $(function() {
+
+
+                                    $('.admin-status').click(function() {
+                                        var id = $(this).attr('dataid');
+                                        var status = $(this).attr('statusid');
+                                        if (status == 1) {
+                                            var msg = '确定禁用吗？';
+                                        } else {
+                                            var msg = '确定启用吗？';
+                                        }
+                                        layer.confirm(msg, {
+                                            title: '状态操作',
+                                            icon: 3
+                                        }, function(index) {
+                                            layer.close(index);
+                                            $.ajax({
+                                                url: "{:url('admin/admin/adminstatus')}",
+                                                type: 'post',
+                                                data: {
+                                                    id: id,
+                                                    status: status
+                                                },
+                                                dataType: 'json',
+                                                success: function(data) {
+                                                    if (data.code == 1) {
+                                                        layer.msg(data.msg, {
+                                                            icon: 6,
+                                                            time: 2000
+                                                        }, function() {
+                                                            location.href = data.url;
+                                                        });
+                                                    } else {
+                                                        layer.open({
+                                                            title: '操作失败',
+                                                            content: data.msg,
+                                                            icon: 5,
+                                                            anim: 6
+                                                        });
+                                                    }
+                                                }
+                                            });
+                                        });
+                                        return false;
+                                    });
+
+                                    $('.admin-del').click(function() {
+                                        var id = $(this).attr('dataid');
+                                        layer.confirm('确定删除吗？', {
+                                            title: '删除管理员',
+                                            icon: 3,
+                                            anim: 6
+                                        }, function(index) {
+                                            layer.close(index);
+                                            $.ajax({
+                                                url: "{:url('admin/admin/admindel')}",
+                                                type: 'post',
+                                                data: {
+                                                    id: id
+                                                },
+                                                dataType: 'json',
+                                                success: function(data) {
+                                                    if (data.code == 1) {
+                                                        layer.msg(data.msg, {
+                                                            icon: 6,
+                                                            time: 2000
+                                                        }, function() {
+                                                            location.href = data.url;
+                                                        });
+                                                    } else {
+                                                        layer.open({
+                                                            title: '操作失败',
+                                                            content: data.msg,
+                                                            icon: 5,
+                                                            anim: 6
+                                                        });
+                                                    }
+                                                }
+                                            });
+                                        });
+                                        return false;
+                                    });
+                                });
+                            </script>
+

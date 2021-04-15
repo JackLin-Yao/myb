@@ -1,0 +1,132 @@
+{include file="public/head" /}
+
+        {include file="public/left" /}
+
+<!--            <div class="page-body">-->
+<!--                <div class="row">-->
+<!--                    <div class="col-xs-12">-->
+<!--                        <div class="widget">-->
+<!--                            <div class="widget-header">-->
+<!--                                <span class="widget-caption">评论列表</span>-->
+<!--                                <div class="widget-buttons">-->
+<!--                                    {$comments->render()|raw|replace}-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                            <div class="widget-body">-->
+<!--                                <table class="table table-hover table-bordered">-->
+<!--                                    <thead>-->
+<!--                                    <tr>-->
+<!--                                        <th>评论文章</th>-->
+<!--                                        <th>评论用户</th>-->
+<!--                                        <th>操作</th>-->
+<!--                                    </tr>-->
+<!--                                    </thead>-->
+<!--                                    <tbody>-->
+<!--                                    {volist name="comments" id="vo"}-->
+<!--                                    <tr>-->
+<!--                                        <td>{$vo.article.title}</td>-->
+<!--                                        <td>{$vo.member.nickname}</td>-->
+<!--                                        <td>-->
+<!--                                            <a href="{:url('admin/comment/commentread', ['id' => $vo.id])}" class="btn btn-azure btn-xs">查看</a>-->
+<!--                                            <a href="#" class="btn btn-danger btn-xs comment-del" dataid="{$vo.id}">删除</a>-->
+<!--                                        </td>-->
+<!--                                    </tr>-->
+<!--                                    {/volist}-->
+<!--                                    </tbody>-->
+<!--                                </table>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--   -->
+
+
+
+
+
+<div class="layui-body">
+    <div style="padding: 15px;">
+        <fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">
+            <legend  style="text-align:center;">评论列表</legend>
+        </fieldset>
+        <div>
+            <table class="layui-table">
+                <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>评论的文章</th>
+                    <th>评论的用户</th>
+                    <th>评论内容</th>
+                    <th>操作</th>
+                </tr>
+                </thead>
+                <tbody>
+                {volist name="comments" id="vo"}
+                <tr>
+                    <td>{$vo.id}</td>
+                    <td>{$vo.article.title}</td>
+                    <td>{$vo.member.nickname}</td>
+                    <td>{$vo.content}</td>
+                    <td>
+                        <a href="{:url('admin/comment/commentread', ['id' => $vo.id])}" class="layui-icon layui-icon-list" style="font-size: 30px; color: #1E9FFF;"
+                           title="查看">查看</a>
+                        <a href="#" dataid="{$vo.id}" class="layui-icon layui-icon-delete comment-del" style="font-size: 30px; color: #1E9FFF;"
+                           title="删除">删除</a>
+                    </td>
+                </tr>
+                {/volist}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+{include file="public/foot" /}
+<script>
+    $(function () {
+
+
+        $('.comment-del').click(function () {
+            var id = $(this).attr('dataid');
+            layer.confirm('确定删除吗？', {
+                title:'删除评论',
+                icon:3
+            }, function (index) {
+                layer.close(index);
+                $.ajax({
+                    url:"{:url('admin/comment/commentdel')}",
+                    type:'post',
+                    data:{id:id},
+                    dataType:'json',
+                    success:function (data) {
+                        if (data.code == 1) {
+                            layer.msg(data.msg, {
+                                icon:6,
+                                time:2000
+                            }, function () {
+                                location.href = data.url;
+                            });
+                        }else {
+                            layer.open({
+                                title:'操作失败',
+                                content:data.msg,
+                                icon:5,
+                                anim:6
+                            });
+                        }
+                    }
+                });
+            });
+            return false;
+        });
+    });
+</script>
+</body>
+<!--  /Body -->
+</html>
